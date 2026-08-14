@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { ServicesSection } from './components/ServicesSection';
 
 const App: React.FC = () => {
   const handleOpenQuoteModal = () => {
@@ -14,6 +15,9 @@ const App: React.FC = () => {
 
       {/* SECTION 2: HERO SECTION */}
       <Hero onOpenQuoteModal={handleOpenQuoteModal} />
+
+      {/* SECTION 3: SERVICES / COMPLETE ROOFING SOLUTIONS */}
+      <ServicesSection />
     </div>
   );
 };

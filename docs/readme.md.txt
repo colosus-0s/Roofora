@@ -20,6 +20,81 @@ The website must work as a real business website whose purpose is to:
 The final template should be good enough that we can customize it for real roofing contractors and use it as a professional client demo.
 
 ---
+# REFERENCE IMAGE — NON-NEGOTIABLE DESIGN SYSTEM
+
+docs/reference.png is the PRIMARY visual and structural reference
+for the entire Roofora project.
+
+It is NOT merely inspiration.
+
+The implementation must follow the reference's:
+
+- layout structure
+- section order
+- proportions
+- spacing
+- visual hierarchy
+- container behavior
+- image treatment
+- card positioning
+- typography hierarchy
+- CTA placement
+- section separation
+- visual density
+- color relationships
+- border radius
+- shadows
+- responsive composition
+
+IMPORTANT:
+
+The reference DOES use full-width visual sections.
+
+Do NOT interpret "modern" as requiring every section to be
+contained inside a narrow centered card.
+
+Instead reproduce the reference's relationship between:
+
+FULL-WIDTH SECTION
++
+CONTROLLED INNER CONTENT
++
+FLOATING / OVERLAPPING ELEMENTS
++
+CLEAR SECTION SEPARATION
+
+For example, the Hero follows this structure:
+
+FULL-WIDTH HERO IMAGE
+→ contained inner content
+→ left hero messaging
+→ right estimate card
+→ overlapping trust/proof strip
+→ clearly separated next section
+
+Do not flatten this structure into a generic website layout.
+
+Do not redesign the composition based on personal preference.
+
+Do not replace the reference's layout with a generic SaaS,
+corporate, construction, or roofing template.
+
+The reference's DESIGN LANGUAGE and COMPOSITIONAL LOGIC
+must remain consistent throughout the entire project.
+
+Before implementing ANY section:
+
+1. Inspect docs/reference.png.
+2. Identify its corresponding layout pattern.
+3. Reproduce that pattern using Roofora's content.
+4. Only then implement the section.
+
+The developer should NOT require repeated reminders about
+the reference.
+
+This is a permanent project-wide design constraint.
+
+
 
 # 02. PRIMARY VISUAL REFERENCE
 
