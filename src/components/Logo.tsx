@@ -7,44 +7,51 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({ className = '', light = false }) => {
   return (
-    <div className={`flex items-center gap-2.5 select-none ${className}`}>
-      {/* SVG Roofora Roof Icon */}
+    <div className={`flex items-center gap-3 select-none group cursor-pointer ${className}`}>
+      {/* Premium Custom SVG Roofora Double-Peak Architectural Logo Mark */}
       <svg
-        width="34"
-        height="32"
-        viewBox="0 0 38 34"
+        width="42"
+        height="38"
+        viewBox="0 0 44 40"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="flex-shrink-0"
+        className="flex-shrink-0 transform group-hover:scale-105 transition-transform duration-300"
       >
-        {/* Main Outer Roof Peak */}
+        {/* Main Left Roof Gable (Primary Dark Navy / White) */}
         <path
-          d="M19 3L3 17H7.5V29C7.5 30.1046 8.39543 31 9.5 31H28.5C29.6046 31 30.5 30.1046 30.5 29V17H35L19 3Z"
+          d="M15 3L2 15H7.5V34H21.5V15H27L15 3Z"
+          fill={light ? "#FFFFFF" : "#0B1220"}
+        />
+        
+        {/* Overlapping Right Roof Gable (Roofora Electric Blue #1D61E7) */}
+        <path
+          d="M30 7L17 18.5H22V34H38V18.5H43L30 7Z"
           fill="#1D61E7"
         />
-        {/* Inner Accent Roof Peak / Cutout */}
-        <path
-          d="M19 9.5L11 16.5V27.5H27V16.5L19 9.5Z"
-          fill={light ? "#0B1220" : "#FFFFFF"}
-        />
-        {/* Roof Window Squares */}
-        <rect x="14" y="19" width="4" height="4" rx="1" fill="#1D61E7" />
-        <rect x="20" y="19" width="4" height="4" rx="1" fill="#1D61E7" />
+
+        {/* Architectural Window Grid inside Primary Left Structure */}
+        <rect x="11.5" y="21" width="3.5" height="3.5" rx="0.5" fill="#1D61E7" />
+        <rect x="16" y="21" width="3.5" height="3.5" rx="0.5" fill="#1D61E7" />
+        <rect x="11.5" y="25.5" width="3.5" height="3.5" rx="0.5" fill="#1D61E7" />
+        <rect x="16" y="25.5" width="3.5" height="3.5" rx="0.5" fill="#1D61E7" />
+
+        {/* Secondary Window Accent inside Blue Peak */}
+        <rect x="26" y="23" width="3" height="3" rx="0.5" fill="#FFFFFF" />
+        <rect x="30" y="23" width="3" height="3" rx="0.5" fill="#FFFFFF" />
       </svg>
 
-      {/* Brand Text */}
+      {/* Premium Brand Typography */}
       <div className="flex flex-col justify-center leading-none">
         <span
-          className={`text-xl font-black tracking-tight ${
+          className={`text-2xl font-black tracking-tight ${
             light ? 'text-white' : 'text-[#0B1220]'
           }`}
-          style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Roofora
         </span>
         <span
-          className={`text-[9px] font-bold tracking-[0.22em] uppercase mt-0.5 ${
-            light ? 'text-slate-400' : 'text-slate-500'
+          className={`text-[9px] font-black tracking-[0.28em] uppercase mt-1 ${
+            light ? 'text-blue-300' : 'text-slate-400'
           }`}
         >
           ROOFING
