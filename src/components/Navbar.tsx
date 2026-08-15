@@ -42,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-[1440px] xl:max-w-[1530px] w-full mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
+      <div className="w-full max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="/" className="inline-block focus:outline-none">
           <Logo />

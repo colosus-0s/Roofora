@@ -34,24 +34,24 @@ export const Hero: React.FC<HeroProps> = () => {
   };
 
   return (
-    <section className="relative w-full bg-slate-900 pt-24 sm:pt-28 lg:pt-36 pb-12 lg:pb-20 overflow-hidden flex flex-col justify-center min-h-[90vh] lg:min-h-[850px]">
-      {/* 100vw Full-Bleed Background Image (House in CENTER visual area) */}
+    <section className="relative w-full bg-slate-900 pt-24 sm:pt-28 lg:pt-36 pb-12 lg:pb-16 overflow-hidden flex flex-col justify-center min-h-[90vh] lg:min-h-[860px]">
+      {/* 100vw Full-Bleed Background Image (House centered between Left Copy & Right Form) */}
       <img
         src="/hero_roofora_bg.jpg"
         alt="Roofora Premium Dusk Residential Roofing"
-        className="absolute inset-0 w-full h-full object-cover object-[center_35%] lg:object-[54%_45%]"
+        className="absolute inset-0 w-full h-full object-cover object-[center_35%] lg:object-[52%_45%] xl:object-[50%_45%]"
       />
 
-      {/* Soft Natural Gradient Overlay on Left for Headline Readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/98 via-white/85 lg:via-white/55 to-transparent w-full lg:w-[48%] pointer-events-none"></div>
+      {/* Natural Soft Tint Gradient for Left Text Readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/98 via-white/85 lg:via-white/50 to-transparent w-full lg:w-[46%] pointer-events-none"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
 
-      {/* Spacious 1440px / 1530px Canvas Container */}
-      <div className="max-w-[1440px] xl:max-w-[1530px] w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10 my-auto">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-12 xl:gap-16">
+      {/* Spacious Viewport Canvas Container (Uses full desktop width up to 1650px) */}
+      <div className="w-full max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-start lg:items-center">
           
-          {/* LEFT CONTENT AREA (Pushed strictly to LEFT side of Viewport) */}
-          <div className="w-full lg:w-[56%] xl:w-[54%] flex flex-col justify-between space-y-6 lg:space-y-8 flex-shrink-0">
+          {/* LEFT CONTENT AREA (Cols 1-7: Eyebrow, Headline, Paragraph, Buttons) */}
+          <div className="w-full lg:col-span-7 xl:col-span-7 flex flex-col justify-between space-y-6 lg:space-y-7">
             
             <div className="space-y-4 sm:space-y-5">
               {/* Eyebrow Badge */}
@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = () => {
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-6xl lg:text-[64px] xl:text-[72px] font-black text-[#0B1220] tracking-tight leading-[1.08] sm:leading-[1.06]">
+              <h1 className="text-4xl sm:text-6xl lg:text-[64px] xl:text-[72px] 2xl:text-[76px] font-black text-[#0B1220] tracking-tight leading-[1.08] sm:leading-[1.05]">
                 Built to Protect <br />
                 What <span className="text-[#1D61E7]">Matters.</span>
               </h1>
@@ -91,14 +91,14 @@ export const Hero: React.FC<HeroProps> = () => {
               </div>
             </div>
 
-            {/* TRUST BAR (Under Left/Center Hero Content ONLY - does NOT stretch under right form) */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 p-4 sm:p-6 lg:px-6 lg:py-6 xl:px-7 xl:py-7 mt-4 sm:mt-6 lg:mt-8 w-full">
-              <div className="grid grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 items-center justify-between text-[#0B1220] lg:divide-x divide-slate-100">
+            {/* TRUST BAR (Desktop: Spans Left + Center zone, sitting directly under Left Copy & CTAs, ending BEFORE Right Form) */}
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 p-4 sm:p-5 lg:p-5 xl:p-6 mt-4 sm:mt-6 lg:mt-6 w-full lg:max-w-[840px] xl:max-w-[940px]">
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-2 xl:gap-3 items-center justify-between text-[#0B1220] lg:divide-x divide-slate-100">
                 
                 {/* Item 1: Google Rating */}
-                <div className="col-span-2 lg:col-span-1 flex items-center gap-3 pb-3 lg:pb-0 border-b lg:border-b-0 border-slate-100 lg:pr-2">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-slate-100/90 flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <svg className="w-5 h-5" viewBox="0 0 24 24">
+                <div className="col-span-2 lg:col-span-1 flex items-center gap-2.5 sm:gap-3 pb-3 lg:pb-0 border-b lg:border-b-0 border-slate-100 lg:pr-2">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-100/90 flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <svg className="w-4.5 h-4.5" viewBox="0 0 24 24">
                       <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                       <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                       <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
@@ -106,59 +106,59 @@ export const Hero: React.FC<HeroProps> = () => {
                     </svg>
                   </div>
                   <div>
-                    <div className="flex items-center gap-1.5 text-base sm:text-lg font-black text-[#0B1220]">
+                    <div className="flex items-center gap-1 text-sm sm:text-base font-black text-[#0B1220] whitespace-nowrap">
                       <span>{siteConfig.stats.googleRating}</span>
                       <div className="flex text-amber-400">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                          <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
                         ))}
                       </div>
                     </div>
-                    <p className="text-[11px] sm:text-xs text-slate-500 font-semibold leading-none mt-0.5">({siteConfig.stats.reviewCount}+ Google Reviews)</p>
+                    <p className="text-[10px] sm:text-[11px] text-slate-500 font-semibold leading-none mt-0.5 whitespace-nowrap">({siteConfig.stats.reviewCount}+ Google Reviews)</p>
                   </div>
                 </div>
 
                 {/* Item 2: Licensed & Insured */}
-                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-3 xl:pl-4 lg:pr-2">
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <ShieldCheck className="w-5 h-5 stroke-[2.2]" />
+                <div className="flex items-center gap-2 sm:gap-2.5 lg:pl-2.5 xl:pl-3 lg:pr-1">
+                  <div className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <ShieldCheck className="w-4.5 h-4.5 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-sm sm:text-base font-black text-[#0B1220] block leading-tight">Licensed</span>
-                    <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">& Insured</span>
+                    <span className="text-xs sm:text-sm font-black text-[#0B1220] block leading-tight whitespace-nowrap">Licensed</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-500 font-semibold whitespace-nowrap">& Insured</span>
                   </div>
                 </div>
 
                 {/* Item 3: 15+ Years Experience */}
-                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-3 xl:pl-4 lg:pr-2">
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <Award className="w-5 h-5 stroke-[2.2]" />
+                <div className="flex items-center gap-2 sm:gap-2.5 lg:pl-2.5 xl:pl-3 lg:pr-1">
+                  <div className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <Award className="w-4.5 h-4.5 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-sm sm:text-base font-black text-[#0B1220] block leading-tight">{siteConfig.stats.yearsExperience}+ Years</span>
-                    <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Experience</span>
+                    <span className="text-xs sm:text-sm font-black text-[#0B1220] block leading-tight whitespace-nowrap">{siteConfig.stats.yearsExperience}+ Years</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-500 font-semibold whitespace-nowrap">Experience</span>
                   </div>
                 </div>
 
                 {/* Item 4: 1,200+ Roofs Completed */}
-                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-3 xl:pl-4 lg:pr-2">
-                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <Home className="w-5 h-5 stroke-[2.2]" />
+                <div className="flex items-center gap-2 sm:gap-2.5 lg:pl-2.5 xl:pl-3 lg:pr-1">
+                  <div className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <Home className="w-4.5 h-4.5 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-sm sm:text-base font-black text-[#0B1220] block leading-tight">{siteConfig.stats.roofsCompleted.toLocaleString()}+</span>
-                    <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Roofs Completed</span>
+                    <span className="text-xs sm:text-sm font-black text-[#0B1220] block leading-tight whitespace-nowrap">{siteConfig.stats.roofsCompleted.toLocaleString()}+</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-500 font-semibold whitespace-nowrap">Roofs Completed</span>
                   </div>
                 </div>
 
                 {/* Item 5: Workmanship Warranty */}
-                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-3 xl:pl-4">
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <Shield className="w-5 h-5 stroke-[2.2]" />
+                <div className="flex items-center gap-2 sm:gap-2.5 lg:pl-2.5 xl:pl-3">
+                  <div className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <Shield className="w-4.5 h-4.5 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-sm sm:text-base font-black text-[#0B1220] block leading-tight">Workmanship</span>
-                    <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Warranty</span>
+                    <span className="text-xs sm:text-sm font-black text-[#0B1220] block leading-tight whitespace-nowrap">Workmanship</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-500 font-semibold whitespace-nowrap">Warranty</span>
                   </div>
                 </div>
 
@@ -167,9 +167,9 @@ export const Hero: React.FC<HeroProps> = () => {
 
           </div>
 
-          {/* RIGHT FORM AREA (Pushed strictly to RIGHT side of Viewport) */}
-          <div className="w-full lg:w-[390px] xl:w-[400px] flex-shrink-0 flex justify-center lg:justify-end mt-6 lg:mt-0" ref={formRef}>
-            <div className="bg-white rounded-2xl p-5 sm:p-7 shadow-2xl border border-slate-100/90 w-full max-w-[420px] lg:max-w-[400px] relative z-10">
+          {/* RIGHT FORM AREA (Cols 8-12: Pushed strictly to RIGHT side of Viewport) */}
+          <div className="w-full lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end mt-6 lg:mt-0" ref={formRef}>
+            <div className="bg-white rounded-2xl p-5 sm:p-7 shadow-2xl border border-slate-100/90 w-full max-w-[420px] lg:max-w-[400px] xl:max-w-[410px] relative z-10">
               
               <div className="flex items-start justify-between border-b border-slate-100 pb-3.5 mb-4">
                 <div>
