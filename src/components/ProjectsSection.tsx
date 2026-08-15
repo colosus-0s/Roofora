@@ -60,15 +60,15 @@ export const ProjectsSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-[#0B1220] py-16 sm:py-20 lg:py-24 text-white relative border-t border-slate-800/80">
-      <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+    <section className="w-full bg-[#0B1220] py-12 sm:py-16 lg:py-24 text-white relative border-t border-slate-800/80">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           
           {/* Left Side: Editorial Intro */}
-          <div className="lg:col-span-4 flex flex-col justify-between space-y-6 lg:sticky lg:top-28">
-            <div className="space-y-4">
+          <div className="lg:col-span-4 flex flex-col justify-between space-y-4 sm:space-y-6 lg:sticky lg:top-28">
+            <div className="space-y-3 sm:space-y-4">
               {/* Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-[#1D61E7] font-bold text-xs tracking-wide uppercase">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-[#1D61E7] font-bold text-[11px] sm:text-xs tracking-wide uppercase">
                 <span>RECENT PROJECTS</span>
               </div>
 
@@ -79,7 +79,7 @@ export const ProjectsSection: React.FC = () => {
               </h2>
 
               {/* Supporting Copy */}
-              <p className="text-slate-300 font-medium text-base sm:text-lg leading-relaxed max-w-md pt-1">
+              <p className="text-slate-300 font-medium text-sm sm:text-base lg:text-lg leading-relaxed max-w-md">
                 Explore some of our recent roofing projects across Austin and surrounding areas.
               </p>
             </div>
@@ -96,9 +96,11 @@ export const ProjectsSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Side: 3 Large Project Showcase Cards */}
+          {/* Right Side: Project Showcase Cards */}
+          {/* Mobile: Horizontal scroll snap carousel (`flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4`) */}
+          {/* Desktop: 3-column grid (`md:grid md:grid-cols-3 md:overflow-visible`) */}
           <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+            <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 md:grid md:grid-cols-3 md:overflow-visible no-scrollbar">
               {projectsData.map((project) => {
                 const currentView = activeViews[project.id] || 'after';
                 const isAfter = currentView === 'after';
@@ -107,7 +109,7 @@ export const ProjectsSection: React.FC = () => {
                   <a
                     key={project.id}
                     href={project.href}
-                    className="group bg-slate-900/90 rounded-2xl border border-slate-800 hover:border-slate-700 shadow-xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                    className="w-[85vw] max-w-[320px] sm:max-w-none flex-shrink-0 snap-center md:w-auto group bg-slate-900/90 rounded-2xl border border-slate-800 hover:border-slate-700 shadow-xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                   >
                     {/* Top Image Container with Before / After Toggle */}
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
@@ -122,15 +124,15 @@ export const ProjectsSection: React.FC = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-black/40 pointer-events-none"></div>
 
                       {/* Number Badge (Top Left) */}
-                      <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md text-white font-mono text-xs font-bold px-2.5 py-1 rounded-lg border border-slate-800">
+                      <div className="absolute top-2.5 left-2.5 bg-slate-950/80 backdrop-blur-md text-white font-mono text-[10px] sm:text-xs font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md border border-slate-800">
                         {project.number}
                       </div>
 
                       {/* BEFORE / AFTER Interactive Toggle Control (Top Right) */}
-                      <div className="absolute top-3 right-3 z-10 flex items-center bg-slate-950/90 backdrop-blur-md p-1 rounded-xl border border-slate-800 shadow-md">
+                      <div className="absolute top-2.5 right-2.5 z-10 flex items-center bg-slate-950/90 backdrop-blur-md p-0.5 sm:p-1 rounded-xl border border-slate-800 shadow-md">
                         <button
                           onClick={(e) => toggleView(project.id, 'before', e)}
-                          className={`px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase transition-all ${
+                          className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[9px] sm:text-[10px] font-extrabold uppercase transition-all ${
                             !isAfter
                               ? 'bg-amber-500 text-slate-950 shadow-xs'
                               : 'text-slate-400 hover:text-white'
@@ -140,7 +142,7 @@ export const ProjectsSection: React.FC = () => {
                         </button>
                         <button
                           onClick={(e) => toggleView(project.id, 'after', e)}
-                          className={`px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase transition-all ${
+                          className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[9px] sm:text-[10px] font-extrabold uppercase transition-all ${
                             isAfter
                               ? 'bg-[#1D61E7] text-white shadow-xs'
                               : 'text-slate-400 hover:text-white'
@@ -151,7 +153,7 @@ export const ProjectsSection: React.FC = () => {
                       </div>
 
                       {/* Transformation State Indicator Badge (Bottom Left of Image) */}
-                      <div className="absolute bottom-3 left-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-900/90 backdrop-blur-md text-[11px] font-bold border border-slate-800">
+                      <div className="absolute bottom-2.5 left-2.5 z-10 inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-slate-900/90 backdrop-blur-md text-[10px] sm:text-[11px] font-bold border border-slate-800">
                         <span className={isAfter ? 'text-emerald-400' : 'text-amber-400'}>
                           {isAfter ? '✓ AFTER: COMPLETED' : '• BEFORE RESTORATION'}
                         </span>
@@ -159,7 +161,7 @@ export const ProjectsSection: React.FC = () => {
                     </div>
 
                     {/* Card Content & Details */}
-                    <div className="p-5 sm:p-6 flex flex-col justify-between flex-grow space-y-3">
+                    <div className="p-4 sm:p-6 flex flex-col justify-between flex-grow space-y-2.5">
                       <div>
                         {/* Location */}
                         <div className="flex items-center gap-1.5 text-xs text-slate-400 font-semibold mb-1">
@@ -168,12 +170,12 @@ export const ProjectsSection: React.FC = () => {
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-lg font-bold text-white group-hover:text-[#1D61E7] transition-colors leading-snug">
+                        <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-[#1D61E7] transition-colors leading-snug">
                           {project.title}
                         </h3>
 
                         {/* Tag */}
-                        <p className="text-xs text-slate-400 font-medium mt-1">
+                        <p className="text-xs text-slate-400 font-medium mt-0.5">
                           {project.tag}
                         </p>
                       </div>

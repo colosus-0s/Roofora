@@ -21,70 +21,72 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
   };
 
   return (
-    <section className="relative w-full bg-slate-900 pt-24 sm:pt-28 lg:pt-32 pb-8 lg:pb-12 overflow-hidden min-h-[720px] lg:min-h-[760px] flex flex-col justify-between">
+    <section className="relative w-full bg-slate-900 pt-24 sm:pt-28 lg:pt-36 pb-12 lg:pb-16 overflow-hidden flex flex-col justify-between">
       {/* Full-width house background image reaching edge to edge (100vw) */}
       <img
         src="/hero_roofora_bg.jpg"
         alt="Roofora Premium Dusk Residential Roofing"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-[center_35%]"
       />
 
       {/* Subtle Natural Tint for Left Text Legibility */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent w-full lg:w-1/2 pointer-events-none"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 lg:via-white/55 to-transparent w-full lg:w-[58%] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
 
-      {/* Wide Responsive Inner Content Wrapper */}
-      <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10 my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end">
+      {/* Wide Responsive Inner Content Wrapper (1440px wide canvas) */}
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10 my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-end">
           
           {/* Left Column (8 cols): Headline, Copy, CTAs, and Floating Trust Strip */}
           <div className="lg:col-span-8 flex flex-col justify-between space-y-6 lg:space-y-8">
             
-            <div className="space-y-5">
+            <div className="space-y-4 sm:space-y-5">
               {/* Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-2xs text-xs font-bold text-[#0B1220]">
-                <ShieldCheck className="w-4 h-4 text-[#1D61E7]" />
+              <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-2xs text-[11px] sm:text-xs font-extrabold text-[#0B1220]">
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1D61E7]" />
                 <span className="tracking-wide uppercase">AUSTIN'S TRUSTED ROOFING EXPERTS</span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-[62px] xl:text-[70px] font-black text-[#0B1220] tracking-tight leading-[1.08] sm:leading-[1.08]">
+              <h1 className="text-4xl sm:text-6xl lg:text-[66px] xl:text-[72px] font-black text-[#0B1220] tracking-tight leading-[1.08] sm:leading-[1.06]">
                 Built to Protect <br />
                 What <span className="text-[#1D61E7]">Matters.</span>
               </h1>
 
               {/* Supporting Copy */}
-              <p className="text-slate-800 font-semibold text-base sm:text-lg leading-relaxed max-w-lg">
+              <p className="text-slate-800 font-semibold text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl">
                 Residential roofing, repairs and replacements across Austin & surrounding areas.
               </p>
 
               {/* Action Buttons */}
-              <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+              <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                 <button
                   onClick={onOpenQuoteModal}
-                  className="bg-[#1D61E7] hover:bg-[#1552C6] text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer transform active:scale-98"
+                  className="w-full sm:w-auto bg-[#1D61E7] hover:bg-[#1552C6] text-white font-extrabold text-sm sm:text-base lg:text-lg px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer transform active:scale-98"
                 >
                   <span>Get Free Estimate</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
 
                 <a
                   href="tel:5125550198"
-                  className="bg-white hover:bg-slate-50 text-[#0B1220] font-bold text-sm sm:text-base px-6 py-3.5 rounded-xl shadow-xs border border-slate-200 hover:border-slate-300 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer text-center"
+                  className="w-full sm:w-auto bg-white hover:bg-slate-50 text-[#0B1220] font-extrabold text-sm sm:text-base lg:text-lg px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl shadow-2xs border border-slate-200 hover:border-slate-300 transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer text-center"
                 >
-                  <Phone className="w-4 h-4 text-[#0B1220]" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#0B1220]" />
                   <span>Call Now</span>
                 </a>
               </div>
             </div>
 
-            {/* Substantial Tall Floating Trust Strip (Heightened & Enlarged Icons/Typography) */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 p-5 sm:px-8 sm:py-7 mt-4 lg:mt-6">
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 items-center justify-between text-[#0B1220] divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+            {/* Mobile & Desktop Trust Bar */}
+            {/* Mobile: Clean 2-column grid with full-width Google rating row */}
+            {/* Desktop: 5-column horizontal bar */}
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 p-4 sm:p-6 lg:px-8 lg:py-7 mt-4 sm:mt-6 lg:mt-8">
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 items-center justify-between text-[#0B1220] lg:divide-x divide-slate-100">
                 
-                {/* Item 1: Google Rating */}
-                <div className="flex items-center gap-3.5 col-span-2 sm:col-span-1 pb-2 sm:pb-0 pr-2">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-slate-100/90 flex items-center justify-center flex-shrink-0 shadow-2xs">
+                {/* Item 1: Google Rating (Spans 2 cols on mobile, 1 col on desktop) */}
+                <div className="col-span-2 lg:col-span-1 flex items-center gap-3 pb-3 lg:pb-0 border-b lg:border-b-0 border-slate-100 lg:pr-2">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-100/90 flex items-center justify-center flex-shrink-0 shadow-2xs">
                     <svg className="w-5 h-5" viewBox="0 0 24 24">
                       <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                       <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -101,51 +103,51 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                         ))}
                       </div>
                     </div>
-                    <p className="text-xs text-slate-500 font-semibold leading-none mt-0.5">(240+ Google Reviews)</p>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-semibold leading-none mt-0.5">(240+ Google Reviews)</p>
                   </div>
                 </div>
 
                 {/* Item 2: Licensed & Insured */}
-                <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:pl-4 sm:pr-2">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
+                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-4 lg:pr-2">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-base sm:text-lg font-black text-[#0B1220] block leading-tight">Licensed</span>
-                    <span className="text-xs text-slate-500 font-semibold">& Insured</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">Licensed</span>
+                    <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">& Insured</span>
                   </div>
                 </div>
 
                 {/* Item 3: 15+ Years Experience */}
-                <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:pl-4 sm:pr-2">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <Award className="w-6 h-6 stroke-[2.2]" />
+                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-4 lg:pr-2">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <Award className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-base sm:text-lg font-black text-[#0B1220] block leading-tight">15+ Years</span>
-                    <span className="text-xs text-slate-500 font-semibold">Experience</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">15+ Years</span>
+                    <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Experience</span>
                   </div>
                 </div>
 
                 {/* Item 4: 1,200+ Roofs Completed */}
-                <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:pl-4 sm:pr-2">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <Home className="w-6 h-6 stroke-[2.2]" />
+                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-4 lg:pr-2">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <Home className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-base sm:text-lg font-black text-[#0B1220] block leading-tight">1,200+</span>
-                    <span className="text-xs text-slate-500 font-semibold">Roofs Completed</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">1,200+</span>
+                    <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Roofs Completed</span>
                   </div>
                 </div>
 
                 {/* Item 5: Workmanship Warranty */}
-                <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:pl-4">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <Shield className="w-6 h-6 stroke-[2.2]" />
+                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-4">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <Shield className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-base sm:text-lg font-black text-[#0B1220] block leading-tight">Workmanship</span>
-                    <span className="text-xs text-slate-500 font-semibold">Warranty</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">Workmanship</span>
+                    <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Warranty</span>
                   </div>
                 </div>
 
@@ -154,14 +156,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
 
           </div>
 
-          {/* Right Column (4 cols): Taller 380px Estimate Form Card Utilizing Lower Hero Space */}
-          <div className="lg:col-span-4 flex justify-end">
-            <div className="bg-white rounded-2xl p-6 sm:p-7 shadow-2xl border border-slate-100/90 w-full max-w-[380px] ml-auto relative z-10">
+          {/* Right Column (4 cols): Estimate Form Card */}
+          {/* On Mobile (<1024px): Stacked naturally below the trust bar (`w-full max-w-[420px] mx-auto mt-6`) */}
+          {/* On Desktop (≥1024px): Right column alignment */}
+          <div className="w-full lg:col-span-4 flex justify-center lg:justify-end mt-6 lg:mt-0">
+            <div className="bg-white rounded-2xl p-5 sm:p-7 shadow-xl lg:shadow-2xl border border-slate-100/90 w-full max-w-[420px] lg:max-w-[390px] relative z-10">
               
               {/* Form Header */}
-              <div className="flex items-start justify-between border-b border-slate-100 pb-4 mb-4">
+              <div className="flex items-start justify-between border-b border-slate-100 pb-3.5 mb-4">
                 <div>
-                  <h3 className="text-lg sm:text-xl font-extrabold text-[#0B1220]">Get Your Free Estimate</h3>
+                  <h3 className="text-lg sm:text-xl font-black text-[#0B1220]">Get Your Free Estimate</h3>
                   <p className="text-xs text-slate-500 font-semibold mt-0.5">Fast. Free. No obligation.</p>
                 </div>
                 <div className="w-8.5 h-8.5 rounded-full bg-blue-50 flex items-center justify-center text-[#1D61E7] flex-shrink-0">
@@ -171,11 +175,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
 
               {/* Form Content */}
               {formSubmitted ? (
-                <div className="py-10 text-center space-y-3">
-                  <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-7 h-7" />
+                <div className="py-8 sm:py-12 text-center space-y-3">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
                   </div>
-                  <h4 className="text-base font-bold text-[#0B1220]">Estimate Request Sent!</h4>
+                  <h4 className="text-base sm:text-lg font-extrabold text-[#0B1220]">Estimate Request Sent!</h4>
                   <p className="text-xs text-slate-500 leading-relaxed max-w-xs mx-auto">
                     Thank you, <span className="font-semibold text-slate-800">{formData.fullName || 'Valued Homeowner'}</span>. An Austin roofing specialist will review your request and call you shortly.
                   </p>
@@ -195,7 +199,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                       placeholder="Full Name"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-xs sm:text-sm text-[#0B1220] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all"
+                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#0B1220] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all"
                     />
                   </div>
 
@@ -206,7 +210,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                       placeholder="Phone Number"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-xs sm:text-sm text-[#0B1220] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all"
+                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#0B1220] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all"
                     />
                   </div>
 
@@ -217,7 +221,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                       placeholder="Email Address"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-xs sm:text-sm text-[#0B1220] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all"
+                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#0B1220] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all"
                     />
                   </div>
 
@@ -225,7 +229,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                     <select
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-xs sm:text-sm text-[#0B1220] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all"
+                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#0B1220] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all"
                     >
                       <option value="">What service do you need?</option>
                       <option value="Roof Replacement">Roof Replacement</option>
@@ -242,7 +246,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                       placeholder="Tell us about your project"
                       value={formData.details}
                       onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-xs sm:text-sm text-[#0B1220] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all resize-none"
+                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#0B1220] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all resize-none"
                     ></textarea>
                   </div>
 
