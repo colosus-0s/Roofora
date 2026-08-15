@@ -19,6 +19,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleEstimateClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    if (onOpenQuoteModal) {
+      onOpenQuoteModal();
+    } else {
+      const heroForm = document.querySelector('form');
+      if (heroForm) {
+        heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const firstInput = heroForm.querySelector('input');
+        if (firstInput) setTimeout(() => firstInput.focus(), 400);
+      }
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -27,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
+      <div className="max-w-[1440px] xl:max-w-[1530px] w-full mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="/" className="inline-block focus:outline-none">
           <Logo />
@@ -57,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
           </a>
 
           <button
-            onClick={onOpenQuoteModal}
+            onClick={handleEstimateClick}
             className="bg-[#1D61E7] hover:bg-[#1552C6] text-white font-extrabold text-xs sm:text-sm px-5 py-2.5 sm:py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2 cursor-pointer"
           >
             <span>Free Estimate</span>
@@ -111,10 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
             </a>
 
             <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenQuoteModal) onOpenQuoteModal();
-              }}
+              onClick={handleEstimateClick}
               className="w-full bg-[#1D61E7] hover:bg-[#1552C6] text-white font-extrabold text-sm py-3.5 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Get Free Estimate</span>

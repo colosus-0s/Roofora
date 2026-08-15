@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ShieldCheck, Phone, ArrowRight, Star, Shield, Award, Home, CheckCircle2 } from 'lucide-react';
 import { siteConfig } from '../config/site';
 
@@ -6,7 +6,7 @@ interface HeroProps {
   onOpenQuoteModal?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
+export const Hero: React.FC<HeroProps> = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -16,30 +16,42 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
     details: '',
   });
 
+  const formRef = useRef<HTMLDivElement>(null);
+
+  const scrollToForm = () => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const firstInput = formRef.current.querySelector('input');
+      if (firstInput) {
+        setTimeout(() => firstInput.focus(), 400);
+      }
+    }
+  };
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
   };
 
   return (
-    <section className="relative w-full bg-slate-900 pt-24 sm:pt-28 lg:pt-36 pb-12 lg:pb-16 overflow-hidden flex flex-col justify-between">
-      {/* House Background Image */}
+    <section className="relative w-full bg-slate-900 pt-24 sm:pt-28 lg:pt-36 pb-12 lg:pb-20 overflow-hidden flex flex-col justify-center min-h-[90vh] lg:min-h-[850px]">
+      {/* 100vw Full-Bleed Dusk Mansion Background Image */}
       <img
         src="/hero_roofora_bg.jpg"
         alt="Roofora Premium Dusk Residential Roofing"
-        className="absolute inset-0 w-full h-full object-cover object-[center_35%]"
+        className="absolute inset-0 w-full h-full object-cover object-[center_35%] lg:object-[60%_35%]"
       />
 
-      {/* Subtle Natural Tint */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 lg:via-white/55 to-transparent w-full lg:w-[58%] pointer-events-none"></div>
+      {/* Subtle Natural Tint Gradient for Text Readability on Left */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/98 via-white/85 lg:via-white/70 to-transparent w-full lg:w-[58%] pointer-events-none"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
 
-      {/* 1440px Wide Canvas */}
-      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10 my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-end">
+      {/* Spacious 1440px / 1530px Canvas Container */}
+      <div className="max-w-[1440px] xl:max-w-[1530px] w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10 my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-start lg:items-center">
           
-          {/* Left Column (8 cols): Headline, Copy, CTAs, Trust Bar */}
-          <div className="lg:col-span-8 flex flex-col justify-between space-y-6 lg:space-y-8">
+          {/* LEFT SIDE (7 cols): Headline, Copy, CTAs, and Integrated Trust Bar */}
+          <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-between space-y-6 lg:space-y-8">
             
             <div className="space-y-4 sm:space-y-5">
               {/* Eyebrow Badge */}
@@ -49,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-6xl lg:text-[66px] xl:text-[72px] font-black text-[#0B1220] tracking-tight leading-[1.08] sm:leading-[1.06]">
+              <h1 className="text-4xl sm:text-6xl lg:text-[64px] xl:text-[72px] font-black text-[#0B1220] tracking-tight leading-[1.08] sm:leading-[1.06]">
                 Built to Protect <br />
                 What <span className="text-[#1D61E7]">Matters.</span>
               </h1>
@@ -62,8 +74,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
               {/* Action Buttons */}
               <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                 <button
-                  onClick={onOpenQuoteModal}
-                  className="w-full sm:w-auto bg-[#1D61E7] hover:bg-[#1552C6] text-white font-extrabold text-sm sm:text-base lg:text-lg px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer transform active:scale-98"
+                  onClick={scrollToForm}
+                  className="w-full sm:w-auto bg-[#1D61E7] hover:bg-[#1552C6] text-white font-extrabold text-sm sm:text-base lg:text-lg px-7 py-3.5 sm:py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer transform active:scale-98"
                 >
                   <span>Get Free Estimate</span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -71,7 +83,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
 
                 <a
                   href={`tel:${siteConfig.contact.phoneTel}`}
-                  className="w-full sm:w-auto bg-white hover:bg-slate-50 text-[#0B1220] font-extrabold text-sm sm:text-base lg:text-lg px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl shadow-2xs border border-slate-200 hover:border-slate-300 transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer text-center"
+                  className="w-full sm:w-auto bg-white hover:bg-slate-50 text-[#0B1220] font-extrabold text-sm sm:text-base lg:text-lg px-7 py-3.5 sm:py-4 rounded-xl shadow-2xs border border-slate-200 hover:border-slate-300 transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer text-center"
                 >
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#0B1220]" />
                   <span>Call Now</span>
@@ -79,13 +91,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
               </div>
             </div>
 
-            {/* Mobile & Desktop Trust Bar */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 p-4 sm:p-6 lg:px-8 lg:py-7 mt-4 sm:mt-6 lg:mt-8">
+            {/* Integrated Trust Bar beneath Left Content */}
+            {/* Desktop: 5-column horizontal strip sitting directly under left copy */}
+            {/* Mobile: Clean 2-column grid with full-width Google rating row */}
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 p-4 sm:p-6 lg:px-6 lg:py-6 xl:px-8 xl:py-7 mt-4 sm:mt-6 lg:mt-8">
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 items-center justify-between text-[#0B1220] lg:divide-x divide-slate-100">
                 
                 {/* Item 1: Google Rating */}
                 <div className="col-span-2 lg:col-span-1 flex items-center gap-3 pb-3 lg:pb-0 border-b lg:border-b-0 border-slate-100 lg:pr-2">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-100/90 flex items-center justify-center flex-shrink-0 shadow-2xs">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-slate-100/90 flex items-center justify-center flex-shrink-0 shadow-2xs">
                     <svg className="w-5 h-5" viewBox="0 0 24 24">
                       <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                       <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -107,45 +121,45 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                 </div>
 
                 {/* Item 2: Licensed & Insured */}
-                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-4 lg:pr-2">
-                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-3 xl:pl-4 lg:pr-2">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <ShieldCheck className="w-5 h-5 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">Licensed</span>
+                    <span className="text-sm sm:text-base font-black text-[#0B1220] block leading-tight">Licensed</span>
                     <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">& Insured</span>
                   </div>
                 </div>
 
                 {/* Item 3: 15+ Years Experience */}
-                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-4 lg:pr-2">
-                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <Award className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-3 xl:pl-4 lg:pr-2">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <Award className="w-5 h-5 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">{siteConfig.stats.yearsExperience}+ Years</span>
+                    <span className="text-sm sm:text-base font-black text-[#0B1220] block leading-tight">{siteConfig.stats.yearsExperience}+ Years</span>
                     <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Experience</span>
                   </div>
                 </div>
 
                 {/* Item 4: 1,200+ Roofs Completed */}
-                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-4 lg:pr-2">
-                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <Home className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-3 xl:pl-4 lg:pr-2">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <Home className="w-5 h-5 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">{siteConfig.stats.roofsCompleted.toLocaleString()}+</span>
+                    <span className="text-sm sm:text-base font-black text-[#0B1220] block leading-tight">{siteConfig.stats.roofsCompleted.toLocaleString()}+</span>
                     <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Roofs Completed</span>
                   </div>
                 </div>
 
                 {/* Item 5: Workmanship Warranty */}
-                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-4">
-                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <Shield className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+                <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-3 xl:pl-4">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                    <Shield className="w-5 h-5 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">Workmanship</span>
+                    <span className="text-sm sm:text-base font-black text-[#0B1220] block leading-tight">Workmanship</span>
                     <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Warranty</span>
                   </div>
                 </div>
@@ -155,9 +169,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
 
           </div>
 
-          {/* Right Column (4 cols): Estimate Form Card */}
-          <div className="w-full lg:col-span-4 flex justify-center lg:justify-end mt-6 lg:mt-0">
-            <div className="bg-white rounded-2xl p-5 sm:p-7 shadow-xl lg:shadow-2xl border border-slate-100/90 w-full max-w-[420px] lg:max-w-[390px] relative z-10">
+          {/* RIGHT SIDE (5 cols): Floating Estimate Form Card */}
+          <div className="w-full lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end mt-6 lg:mt-0" ref={formRef}>
+            <div className="bg-white rounded-2xl p-5 sm:p-7 shadow-2xl border border-slate-100/90 w-full max-w-[420px] lg:max-w-[400px] relative z-10">
               
               <div className="flex items-start justify-between border-b border-slate-100 pb-3.5 mb-4">
                 <div>
@@ -176,10 +190,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                   </div>
                   <h4 className="text-base sm:text-lg font-extrabold text-[#0B1220]">Estimate Request Sent!</h4>
                   <p className="text-xs text-slate-500 leading-relaxed max-w-xs mx-auto">
-                    Thank you, <span className="font-semibold text-slate-800">{formData.fullName || 'Valued Homeowner'}</span>. An Austin roofing specialist will review your request and call you shortly.
+                    Thank you, <span className="font-semibold text-slate-800">{formData.fullName || 'Valued Homeowner'}</span>. An Austin roofing specialist will review your request and call you at <span className="font-semibold text-slate-800">{formData.phone}</span> shortly.
                   </p>
                   <button
-                    onClick={() => setFormSubmitted(false)}
+                    onClick={() => {
+                      setFormSubmitted(false);
+                      setFormData({ fullName: '', phone: '', email: '', service: '', details: '' });
+                    }}
                     className="text-xs text-[#1D61E7] font-semibold hover:underline mt-2 inline-block cursor-pointer"
                   >
                     Submit another request
@@ -188,7 +205,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-3 sm:space-y-3.5">
                   <div>
+                    <label htmlFor="hero-fullname" className="sr-only">Full Name</label>
                     <input
+                      id="hero-fullname"
                       type="text"
                       required
                       placeholder="Full Name"
@@ -199,7 +218,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                   </div>
 
                   <div>
+                    <label htmlFor="hero-phone" className="sr-only">Phone Number</label>
                     <input
+                      id="hero-phone"
                       type="tel"
                       required
                       placeholder="Phone Number"
@@ -210,7 +231,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                   </div>
 
                   <div>
+                    <label htmlFor="hero-email" className="sr-only">Email Address</label>
                     <input
+                      id="hero-email"
                       type="email"
                       required
                       placeholder="Email Address"
@@ -221,7 +244,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                   </div>
 
                   <div>
+                    <label htmlFor="hero-service" className="sr-only">Service Required</label>
                     <select
+                      id="hero-service"
+                      required
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                       className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#0B1220] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D61E7] transition-all"
@@ -236,7 +262,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                   </div>
 
                   <div>
+                    <label htmlFor="hero-details" className="sr-only">Project Details</label>
                     <textarea
+                      id="hero-details"
                       rows={3}
                       placeholder="Tell us about your project"
                       value={formData.details}

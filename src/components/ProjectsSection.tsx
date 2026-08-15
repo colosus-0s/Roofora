@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { MapPin, ArrowRight } from 'lucide-react';
+import { MapPin, ArrowRight, X, ShieldCheck } from 'lucide-react';
 import { projectsData } from '../data/projects';
+import type { ProjectData } from '../data/projects';
+import { siteConfig } from '../config/site';
 
 export const ProjectsSection: React.FC = () => {
   const [activeViews, setActiveViews] = useState<{ [key: string]: 'before' | 'after' }>({
@@ -8,6 +10,8 @@ export const ProjectsSection: React.FC = () => {
     'round-rock': 'after',
     'cedar-park': 'after',
   });
+
+  const [activeModalProject, setActiveModalProject] = useState<ProjectData | null>(null);
 
   const toggleView = (id: string, view: 'before' | 'after', e: React.MouseEvent) => {
     e.preventDefault();
@@ -17,7 +21,7 @@ export const ProjectsSection: React.FC = () => {
 
   return (
     <section id="projects" className="w-full bg-[#0B1220] py-12 sm:py-16 lg:py-24 text-white relative border-t border-slate-800/80">
-      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="max-w-[1440px] xl:max-w-[1530px] w-full mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           
           {/* Left Side: Editorial Intro */}
@@ -58,6 +62,7 @@ export const ProjectsSection: React.FC = () => {
                 return (
                   <div
                     key={project.id}
+                    onClick={() => setActiveModalProject(project)}
                     className="w-[85vw] max-w-[320px] sm:max-w-none flex-shrink-0 snap-center md:w-auto group bg-slate-900/90 rounded-2xl border border-slate-800 hover:border-slate-700 shadow-xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                   >
                     {/* Top Image Container with Before / After Toggle */}
@@ -134,6 +139,64 @@ export const ProjectsSection: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Interactive Project Detail Modal */}
+      {activeModalProject && (
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+          <div className="bg-slate-900 rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-800 relative space-y-5 max-h-[90vh] overflow-y-auto text-white">
+            <button
+              onClick={() => setActiveModalProject(null)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center justify-center cursor-pointer transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-xs text-[#1D61E7] font-extrabold uppercase">
+                <MapPin className="w-3.5 h-3.5" />
+                <span>{activeModalProject.location}</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-white">{activeModalProject.title}</h3>
+              <p className="text-xs text-slate-400 font-semibold">{activeModalProject.tag}</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block">Before Restoration</span>
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-950 border border-slate-800">
+                  <img src={activeModalProject.beforeImage} alt="Before" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider block">After Installation</span>
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-950 border border-slate-800">
+                  <img src={activeModalProject.afterImage} alt="After" className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+
+            <p className="text-sm text-slate-300 leading-relaxed font-medium">
+              {activeModalProject.description}
+            </p>
+
+            <div className="pt-3 border-t border-slate-800 flex items-center gap-3">
+              <a
+                href={`tel:${siteConfig.contact.phoneTel}`}
+                className="flex-1 bg-[#1D61E7] hover:bg-[#1552C6] text-white font-extrabold text-xs sm:text-sm py-3 px-4 rounded-xl text-center shadow-md transition-all cursor-pointer flex items-center justify-center gap-2"
+              >
+                <ShieldCheck className="w-4 h-4" />
+                <span>Request Similar Project Quote</span>
+              </a>
+              <button
+                onClick={() => setActiveModalProject(null)}
+                className="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm py-3 px-5 rounded-xl transition-all cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

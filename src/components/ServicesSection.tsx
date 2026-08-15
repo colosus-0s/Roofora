@@ -1,11 +1,15 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, X, Check, Shield } from 'lucide-react';
 import { servicesData } from '../data/services';
+import type { ServiceData } from '../data/services';
+import { siteConfig } from '../config/site';
 
 export const ServicesSection: React.FC = () => {
+  const [activeModalService, setActiveModalService] = useState<ServiceData | null>(null);
+
   return (
     <section id="services" className="w-full bg-[#F8FAFC] py-12 sm:py-16 lg:py-24 border-t border-slate-100">
-      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="max-w-[1440px] xl:max-w-[1530px] w-full mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           
           {/* Left Column: Editorial Introduction */}
@@ -45,7 +49,8 @@ export const ServicesSection: React.FC = () => {
                 return (
                   <div
                     key={service.id}
-                    className="group bg-white rounded-2xl border border-slate-200/80 shadow-2xs hover:shadow-xl hover:border-blue-200 transition-all duration-300 overflow-hidden flex flex-col justify-between"
+                    onClick={() => setActiveModalService(service)}
+                    className="group bg-white rounded-2xl border border-slate-200/80 shadow-2xs hover:shadow-xl hover:border-blue-200 transition-all duration-300 overflow-hidden flex flex-col justify-between cursor-pointer"
                   >
                     <div>
                       {/* Card Image Header */}
@@ -94,6 +99,72 @@ export const ServicesSection: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Interactive Service Detail Modal */}
+      {activeModalService && (
+        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+          <div className="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative space-y-5 max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setActiveModalService(null)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center cursor-pointer transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center">
+                <Shield className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-[#1D61E7] uppercase tracking-wider">{activeModalService.tag}</span>
+                <h3 className="text-xl sm:text-2xl font-black text-[#0B1220]">{activeModalService.title}</h3>
+              </div>
+            </div>
+
+            <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-slate-100">
+              <img
+                src={activeModalService.image}
+                alt={activeModalService.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
+              {activeModalService.fullDescription}
+            </p>
+
+            {activeModalService.faqs && activeModalService.faqs.length > 0 && (
+              <div className="pt-2 border-t border-slate-100 space-y-2">
+                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Frequently Asked Questions</h4>
+                {activeModalService.faqs.map((faq, idx) => (
+                  <div key={idx} className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-1">
+                    <div className="text-xs font-bold text-[#0B1220] flex items-center gap-2">
+                      <Check className="w-3.5 h-3.5 text-[#1D61E7]" />
+                      <span>{faq.question}</span>
+                    </div>
+                    <p className="text-xs text-slate-500 pl-5">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="pt-3 flex items-center gap-3">
+              <a
+                href={`tel:${siteConfig.contact.phoneTel}`}
+                className="flex-1 bg-[#1D61E7] hover:bg-[#1552C6] text-white font-extrabold text-xs sm:text-sm py-3 px-4 rounded-xl text-center shadow-md transition-all cursor-pointer"
+              >
+                Call for {activeModalService.title}
+              </a>
+              <button
+                onClick={() => setActiveModalService(null)}
+                className="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm py-3 px-5 rounded-xl transition-all cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
