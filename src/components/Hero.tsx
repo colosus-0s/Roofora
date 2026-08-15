@@ -35,23 +35,23 @@ export const Hero: React.FC<HeroProps> = () => {
 
   return (
     <section className="relative w-full bg-slate-900 pt-24 sm:pt-28 lg:pt-36 pb-12 lg:pb-20 overflow-hidden flex flex-col justify-center min-h-[90vh] lg:min-h-[850px]">
-      {/* 100vw Full-Bleed Dusk Mansion Background Image */}
+      {/* 100vw Full-Bleed Background Image (House in CENTER visual area) */}
       <img
         src="/hero_roofora_bg.jpg"
         alt="Roofora Premium Dusk Residential Roofing"
-        className="absolute inset-0 w-full h-full object-cover object-[center_35%] lg:object-[60%_35%]"
+        className="absolute inset-0 w-full h-full object-cover object-[center_35%] lg:object-[54%_45%]"
       />
 
-      {/* Subtle Natural Tint Gradient for Text Readability on Left */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/98 via-white/85 lg:via-white/70 to-transparent w-full lg:w-[58%] pointer-events-none"></div>
+      {/* Soft Natural Gradient Overlay on Left for Headline Readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/98 via-white/85 lg:via-white/55 to-transparent w-full lg:w-[48%] pointer-events-none"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
 
       {/* Spacious 1440px / 1530px Canvas Container */}
       <div className="max-w-[1440px] xl:max-w-[1530px] w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10 my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-start lg:items-center">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-12 xl:gap-16">
           
-          {/* LEFT SIDE (7 cols): Headline, Copy, CTAs, and Integrated Trust Bar */}
-          <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-between space-y-6 lg:space-y-8">
+          {/* LEFT CONTENT AREA (Pushed strictly to LEFT side of Viewport) */}
+          <div className="w-full lg:w-[56%] xl:w-[54%] flex flex-col justify-between space-y-6 lg:space-y-8 flex-shrink-0">
             
             <div className="space-y-4 sm:space-y-5">
               {/* Eyebrow Badge */}
@@ -91,10 +91,8 @@ export const Hero: React.FC<HeroProps> = () => {
               </div>
             </div>
 
-            {/* Integrated Trust Bar beneath Left Content */}
-            {/* Desktop: 5-column horizontal strip sitting directly under left copy */}
-            {/* Mobile: Clean 2-column grid with full-width Google rating row */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 p-4 sm:p-6 lg:px-6 lg:py-6 xl:px-8 xl:py-7 mt-4 sm:mt-6 lg:mt-8">
+            {/* TRUST BAR (Under Left/Center Hero Content ONLY - does NOT stretch under right form) */}
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 p-4 sm:p-6 lg:px-6 lg:py-6 xl:px-7 xl:py-7 mt-4 sm:mt-6 lg:mt-8 w-full">
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 items-center justify-between text-[#0B1220] lg:divide-x divide-slate-100">
                 
                 {/* Item 1: Google Rating */}
@@ -144,7 +142,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
                 {/* Item 4: 1,200+ Roofs Completed */}
                 <div className="flex items-center gap-2.5 sm:gap-3.5 lg:pl-3 xl:pl-4 lg:pr-2">
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#1D61E7] flex items-center justify-center flex-shrink-0 shadow-2xs">
                     <Home className="w-5 h-5 stroke-[2.2]" />
                   </div>
                   <div>
@@ -169,8 +167,8 @@ export const Hero: React.FC<HeroProps> = () => {
 
           </div>
 
-          {/* RIGHT SIDE (5 cols): Floating Estimate Form Card */}
-          <div className="w-full lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end mt-6 lg:mt-0" ref={formRef}>
+          {/* RIGHT FORM AREA (Pushed strictly to RIGHT side of Viewport) */}
+          <div className="w-full lg:w-[390px] xl:w-[400px] flex-shrink-0 flex justify-center lg:justify-end mt-6 lg:mt-0" ref={formRef}>
             <div className="bg-white rounded-2xl p-5 sm:p-7 shadow-2xl border border-slate-100/90 w-full max-w-[420px] lg:max-w-[400px] relative z-10">
               
               <div className="flex items-start justify-between border-b border-slate-100 pb-3.5 mb-4">
