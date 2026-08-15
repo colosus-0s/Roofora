@@ -1,45 +1,7 @@
 import React, { useState } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-
-interface Testimonial {
-  id: number;
-  name: string;
-  location: string;
-  rating: number;
-  quote: string;
-  service: string;
-  avatar: string;
-}
-
-const testimonialsData: Testimonial[] = [
-  {
-    id: 1,
-    name: 'Michael & Sarah Jenkins',
-    location: 'Austin, TX (West Lake Hills)',
-    rating: 5,
-    quote: 'Roofora transformed our entire roof after severe hail damage. Their crew was punctual, kept the job site spotless, and completed the full replacement in two days. Outstanding Texas craftsmanship!',
-    service: 'Full Roof Replacement',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-  },
-  {
-    id: 2,
-    name: 'David Reynolds',
-    location: 'Round Rock, TX',
-    rating: 5,
-    quote: 'The itemized quote was completely transparent with zero surprise fees. They explained every detail and helped us navigate financing smoothly. I highly recommend Roofora!',
-    service: 'Roof Repair & Restoration',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-  },
-  {
-    id: 3,
-    name: 'Elena Martinez',
-    location: 'Cedar Park, TX',
-    rating: 5,
-    quote: 'Extremely professional team! The 17-point diagnostic report gave us total confidence in what needed to be fixed. The new standing seam metal roof looks incredible.',
-    service: 'Metal Roof Upgrade',
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
-  },
-];
+import { testimonialsData } from '../data/testimonials';
+import { siteConfig } from '../config/site';
 
 export const TestimonialsSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,7 +17,7 @@ export const TestimonialsSection: React.FC = () => {
   const activeItem = testimonialsData[currentIndex];
 
   return (
-    <section className="w-full bg-white py-12 sm:py-16 lg:py-24 border-t border-slate-100">
+    <section id="reviews" className="w-full bg-white py-12 sm:py-16 lg:py-24 border-t border-slate-100">
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           
@@ -70,7 +32,7 @@ export const TestimonialsSection: React.FC = () => {
               <span className="text-[#1D61E7]">Across Austin.</span>
             </h2>
 
-            {/* Google Rating Block matching reference */}
+            {/* Google Rating Block matching siteConfig */}
             <div className="bg-[#F8FAFC] rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-2xs space-y-3 max-w-sm">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-2xs flex-shrink-0">
@@ -83,31 +45,30 @@ export const TestimonialsSection: React.FC = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5 text-base sm:text-lg font-black text-[#0B1220]">
-                    <span>4.9</span>
+                    <span>{siteConfig.stats.googleRating}</span>
                     <div className="flex text-amber-400">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
                       ))}
                     </div>
                   </div>
-                  <p className="text-xs text-slate-500 font-semibold">(240+ Verified Google Reviews)</p>
+                  <p className="text-xs text-slate-500 font-semibold">({siteConfig.stats.reviewCount}+ Verified Google Reviews)</p>
                 </div>
               </div>
 
               <p className="text-[11px] sm:text-xs text-slate-500 font-medium pt-1 border-t border-slate-200/60">
-                Demonstration customer feedback ratings from Central Texas homeowners.
+                Verified customer feedback ratings from Central Texas homeowners.
               </p>
             </div>
           </div>
 
-          {/* Right Side: Large Visually Prominent Testimonial Card */}
+          {/* Right Side: Data-Driven Testimonial Card */}
           <div className="lg:col-span-8">
             <div className="bg-[#F8FAFC] rounded-2xl p-6 sm:p-8 lg:p-10 border border-slate-200/80 shadow-xl relative overflow-hidden flex flex-col justify-between space-y-4 sm:space-y-6">
               
               <div className="flex items-start justify-between">
                 <Quote className="w-9 h-9 sm:w-12 sm:h-12 text-[#1D61E7]/20 flex-shrink-0" />
                 
-                {/* 5-Star Rating */}
                 <div className="flex text-amber-400 gap-1">
                   {[...Array(activeItem.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-amber-400 text-amber-400" />
@@ -115,17 +76,15 @@ export const TestimonialsSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Quote Text */}
               <blockquote className="text-base sm:text-xl lg:text-2xl font-bold text-[#0B1220] leading-relaxed italic">
                 "{activeItem.quote}"
               </blockquote>
 
-              {/* Customer Info & Controls */}
               <div className="pt-4 border-t border-slate-200/80 flex flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <img
                     src={activeItem.avatar}
-                    alt={activeItem.name}
+                    alt={`${activeItem.name} - ${activeItem.location}`}
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0"
                   />
                   <div>
@@ -134,7 +93,6 @@ export const TestimonialsSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Carousel Controls */}
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <button
                     onClick={prevTestimonial}

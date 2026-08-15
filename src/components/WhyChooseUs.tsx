@@ -1,49 +1,9 @@
 import React from 'react';
-import { ShieldCheck, Award, MessageSquareCheck, Clock, Shield } from 'lucide-react';
-
-interface TrustPoint {
-  number: string;
-  title: string;
-  description: string;
-  icon: React.ElementType;
-}
-
-const trustPoints: TrustPoint[] = [
-  {
-    number: '01',
-    title: 'Premium Materials',
-    description: 'Top-rated roofing products built to withstand severe Texas weather.',
-    icon: ShieldCheck,
-  },
-  {
-    number: '02',
-    title: 'Expert Installation',
-    description: 'Skilled crews with meticulous attention to detail on every roof ridge.',
-    icon: Award,
-  },
-  {
-    number: '03',
-    title: 'Clear Communication',
-    description: 'We keep homeowners fully informed with transparent updates throughout.',
-    icon: MessageSquareCheck,
-  },
-  {
-    number: '04',
-    title: 'On-Time, Every Time',
-    description: 'We respect your time and property, completing installations on schedule.',
-    icon: Clock,
-  },
-  {
-    number: '05',
-    title: 'Strong Warranties',
-    description: 'We back all workmanship with bulletproof manufacturer & labor warranties.',
-    icon: Shield,
-  },
-];
+import { whyUsData } from '../data/whyUs';
 
 export const WhyChooseUs: React.FC = () => {
   return (
-    <section className="w-full bg-white py-12 sm:py-16 lg:py-24 border-t border-slate-100">
+    <section id="about" className="w-full bg-white py-12 sm:py-16 lg:py-24 border-t border-slate-100">
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           
@@ -64,13 +24,11 @@ export const WhyChooseUs: React.FC = () => {
           </div>
 
           {/* Right Column: 5 Visual Trust Points Grid */}
-          {/* Mobile: Clean 2-column grid (`grid-cols-2`), 5th card spans 2 cols (`col-span-2`) */}
-          {/* Desktop: 2-column grid inside 7 cols container */}
           <div className="lg:col-span-7">
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-3.5 sm:gap-6">
-              {trustPoints.map((point, index) => {
+              {whyUsData.map((point, index) => {
                 const IconComponent = point.icon;
-                const isFullWidth = index === 4; // 5th item spans both cols on mobile & desktop
+                const isFullWidth = index === 4;
 
                 return (
                   <div

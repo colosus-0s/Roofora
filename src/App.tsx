@@ -10,6 +10,7 @@ import { ServiceAreas } from './components/ServiceAreas';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
+import { SEO } from './components/SEO';
 
 const App: React.FC = () => {
   const handleOpenQuoteModal = () => {
@@ -18,37 +19,42 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-[#0B1220] flex flex-col font-sans antialiased selection:bg-[#1D61E7] selection:text-white">
+      {/* Dynamic Head SEO & JSON-LD Structured Data */}
+      <SEO />
+
       {/* SECTION 1: GLOBAL NAVIGATION */}
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
 
-      {/* SECTION 2: HERO SECTION */}
-      <Hero onOpenQuoteModal={handleOpenQuoteModal} />
+      <main className="flex-grow">
+        {/* SECTION 2: HERO SECTION */}
+        <Hero onOpenQuoteModal={handleOpenQuoteModal} />
 
-      {/* SECTION 3: SERVICES / COMPLETE ROOFING SOLUTIONS (LIGHT) */}
-      <ServicesSection />
+        {/* SECTION 3: SERVICES / COMPLETE ROOFING SOLUTIONS */}
+        <ServicesSection />
 
-      {/* SECTION 4: RECENT PROJECTS / REAL WORK (DARK NAVY) */}
-      <ProjectsSection />
+        {/* SECTION 4: RECENT PROJECTS / REAL WORK */}
+        <ProjectsSection />
 
-      {/* SECTION 5: WHY HOMEOWNERS CHOOSE US (LIGHT) */}
-      <WhyChooseUs />
+        {/* SECTION 5: WHY HOMEOWNERS CHOOSE US */}
+        <WhyChooseUs />
 
-      {/* SECTION 6: FINANCING / CLEAR ESTIMATES (LIGHT / FLOATING CARD) */}
-      <FinancingSection onOpenQuoteModal={handleOpenQuoteModal} />
+        {/* SECTION 6: FINANCING / CLEAR ESTIMATES */}
+        <FinancingSection onOpenQuoteModal={handleOpenQuoteModal} />
 
-      {/* SECTION 7: OUR SIMPLE PROCESS (LIGHT) */}
-      <ProcessSection />
+        {/* SECTION 7: OUR SIMPLE PROCESS */}
+        <ProcessSection />
 
-      {/* SECTION 8: SERVICE AREAS (SPLIT / LIGHT) */}
-      <ServiceAreas />
+        {/* SECTION 8: SERVICE AREAS */}
+        <ServiceAreas onOpenQuoteModal={handleOpenQuoteModal} />
 
-      {/* SECTION 9: TESTIMONIALS (LIGHT) */}
-      <TestimonialsSection />
+        {/* SECTION 9: TESTIMONIALS */}
+        <TestimonialsSection />
 
-      {/* SECTION 10: FINAL CTA (ROOFORA BLUE) */}
-      <FinalCTA onOpenQuoteModal={handleOpenQuoteModal} />
+        {/* SECTION 10: FINAL CTA */}
+        <FinalCTA onOpenQuoteModal={handleOpenQuoteModal} />
+      </main>
 
-      {/* SECTION 11: FOOTER (DARK NAVY) */}
+      {/* SECTION 11: FOOTER */}
       <Footer />
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ShieldCheck, Phone, ArrowRight, Star, Shield, Award, Home, CheckCircle2 } from 'lucide-react';
+import { siteConfig } from '../config/site';
 
 interface HeroProps {
   onOpenQuoteModal?: () => void;
@@ -22,22 +23,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
 
   return (
     <section className="relative w-full bg-slate-900 pt-24 sm:pt-28 lg:pt-36 pb-12 lg:pb-16 overflow-hidden flex flex-col justify-between">
-      {/* Full-width house background image reaching edge to edge (100vw) */}
+      {/* House Background Image */}
       <img
         src="/hero_roofora_bg.jpg"
         alt="Roofora Premium Dusk Residential Roofing"
         className="absolute inset-0 w-full h-full object-cover object-[center_35%]"
       />
 
-      {/* Subtle Natural Tint for Left Text Legibility */}
+      {/* Subtle Natural Tint */}
       <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 lg:via-white/55 to-transparent w-full lg:w-[58%] pointer-events-none"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
 
-      {/* Wide Responsive Inner Content Wrapper (1440px wide canvas) */}
+      {/* 1440px Wide Canvas */}
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-end">
           
-          {/* Left Column (8 cols): Headline, Copy, CTAs, and Floating Trust Strip */}
+          {/* Left Column (8 cols): Headline, Copy, CTAs, Trust Bar */}
           <div className="lg:col-span-8 flex flex-col justify-between space-y-6 lg:space-y-8">
             
             <div className="space-y-4 sm:space-y-5">
@@ -55,7 +56,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
 
               {/* Supporting Copy */}
               <p className="text-slate-800 font-semibold text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl">
-                Residential roofing, repairs and replacements across Austin & surrounding areas.
+                {siteConfig.description}
               </p>
 
               {/* Action Buttons */}
@@ -69,7 +70,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                 </button>
 
                 <a
-                  href="tel:5125550198"
+                  href={`tel:${siteConfig.contact.phoneTel}`}
                   className="w-full sm:w-auto bg-white hover:bg-slate-50 text-[#0B1220] font-extrabold text-sm sm:text-base lg:text-lg px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl shadow-2xs border border-slate-200 hover:border-slate-300 transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer text-center"
                 >
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#0B1220]" />
@@ -79,12 +80,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
             </div>
 
             {/* Mobile & Desktop Trust Bar */}
-            {/* Mobile: Clean 2-column grid with full-width Google rating row */}
-            {/* Desktop: 5-column horizontal bar */}
             <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 p-4 sm:p-6 lg:px-8 lg:py-7 mt-4 sm:mt-6 lg:mt-8">
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 items-center justify-between text-[#0B1220] lg:divide-x divide-slate-100">
                 
-                {/* Item 1: Google Rating (Spans 2 cols on mobile, 1 col on desktop) */}
+                {/* Item 1: Google Rating */}
                 <div className="col-span-2 lg:col-span-1 flex items-center gap-3 pb-3 lg:pb-0 border-b lg:border-b-0 border-slate-100 lg:pr-2">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-100/90 flex items-center justify-center flex-shrink-0 shadow-2xs">
                     <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -96,14 +95,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                   </div>
                   <div>
                     <div className="flex items-center gap-1.5 text-base sm:text-lg font-black text-[#0B1220]">
-                      <span>4.9</span>
+                      <span>{siteConfig.stats.googleRating}</span>
                       <div className="flex text-amber-400">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                         ))}
                       </div>
                     </div>
-                    <p className="text-[11px] sm:text-xs text-slate-500 font-semibold leading-none mt-0.5">(240+ Google Reviews)</p>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-semibold leading-none mt-0.5">({siteConfig.stats.reviewCount}+ Google Reviews)</p>
                   </div>
                 </div>
 
@@ -124,7 +123,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                     <Award className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">15+ Years</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">{siteConfig.stats.yearsExperience}+ Years</span>
                     <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Experience</span>
                   </div>
                 </div>
@@ -135,7 +134,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                     <Home className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
                   </div>
                   <div>
-                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">1,200+</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-black text-[#0B1220] block leading-tight">{siteConfig.stats.roofsCompleted.toLocaleString()}+</span>
                     <span className="text-[11px] sm:text-xs text-slate-500 font-semibold">Roofs Completed</span>
                   </div>
                 </div>
@@ -157,12 +156,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
           </div>
 
           {/* Right Column (4 cols): Estimate Form Card */}
-          {/* On Mobile (<1024px): Stacked naturally below the trust bar (`w-full max-w-[420px] mx-auto mt-6`) */}
-          {/* On Desktop (≥1024px): Right column alignment */}
           <div className="w-full lg:col-span-4 flex justify-center lg:justify-end mt-6 lg:mt-0">
             <div className="bg-white rounded-2xl p-5 sm:p-7 shadow-xl lg:shadow-2xl border border-slate-100/90 w-full max-w-[420px] lg:max-w-[390px] relative z-10">
               
-              {/* Form Header */}
               <div className="flex items-start justify-between border-b border-slate-100 pb-3.5 mb-4">
                 <div>
                   <h3 className="text-lg sm:text-xl font-black text-[#0B1220]">Get Your Free Estimate</h3>
@@ -173,7 +169,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
                 </div>
               </div>
 
-              {/* Form Content */}
               {formSubmitted ? (
                 <div className="py-8 sm:py-12 text-center space-y-3">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
